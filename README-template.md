@@ -1,0 +1,1 @@
+Creando proyecto para aprendizaje y reforzar conocimientos de html, css y js con consumo de API, usando https://open-meteo.com/
