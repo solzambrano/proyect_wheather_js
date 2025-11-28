@@ -4,22 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 <link rel="stylesheet" href="./assets/styles/principal.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <title>Weather proyect</title>
 </head>
 <body>
 <main class="body-page">
-<nav>
+<nav class="nav">
   <div class="weather-title">
     <img src="./assets/images/logo.svg" alt="">
-
   </div>
-  <button> Units </button>
+  <button class="units">
+    <img src="./assets/images/icon-units.svg" alt="engranaje">
+    <span > Units </span>
+    <img src="./assets/images/icon-dropdown.svg" alt="flecha">
+  </button>
 </nav>
 <section class=principal>
   <h1>How's the sky looking today?</h1>
   <div class="search">
-    <button>Search</button>
+    <button class="search-button">Search</button>
     <input>
   </div>
 </section>
