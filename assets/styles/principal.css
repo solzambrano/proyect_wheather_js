@@ -1,6 +1,6 @@
 .body-page{
     background-color:rgb(3, 3, 92) ;
-    width: 355px;
+    width: 310px;
 }
 *{color:white;
     font-family: "Outfit", sans-serif
@@ -43,10 +43,10 @@
     width: 12px;
 }
 .search{
-    background-color: var(--Neutral700);
+    background-color: var(--Neutral600);
     width: 90%;
     margin:0 auto;
-    border-radius: 5px;
+    border-radius: 7px;
     display: flex;
     height: 35px;
     align-items: center;
@@ -56,14 +56,17 @@
     margin:0px 15px
 }
 .search-input{
-    background-color: var(--Neutral700);
+    background-color: transparent;
     border:none;
     color:white
 }
 .search-button{
     background-color: var(--Blue500);
-    
+    height: 35px;
+    margin: 15px;
+    border-radius: 7px;
 }
-.units{
-  
+.principal-title{
+  padding: 0px 50px;
+  width: 65%;
 }
