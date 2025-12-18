@@ -1,6 +1,7 @@
 .body-page{
     background-color:rgb(3, 3, 92) ;
     width: 310px;
+    margin:0 auto;
 }
 *{color:white;
     font-family: "Outfit", sans-serif
@@ -65,8 +66,10 @@
     height: 35px;
     margin: 15px;
     border-radius: 7px;
+    width: 90%;
 }
 .principal-title{
   padding: 0px 50px;
   width: 65%;
+  font-size: 35px;
 }
