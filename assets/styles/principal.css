@@ -73,3 +73,17 @@
   width: 65%;
   font-size: 35px;
 }
+.today{
+    background-image: url(../images/bg-today-small.svg);
+    height: 350px;
+    width: 90%;
+    margin:0 auto;
+    background-repeat: no-repeat;
+    background-size: 275px;
+}
+/**section today*/
+.today-temperature{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
