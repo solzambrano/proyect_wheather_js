@@ -19,7 +19,7 @@
     --Blue700: hsl(248, 70%, 36%);
 }
 .show-information, .error-information{
-    /* display: none; */
+    display: none;
 }
 .error-information{
     width: 85%;
