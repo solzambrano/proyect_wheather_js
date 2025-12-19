@@ -21,6 +21,31 @@
 .show-information, .error-information{
     /* display: none; */
 }
+.error-information{
+    width: 85%;
+    margin:0 auto;
+    height: 350px;
+}
+.error-img{
+    margin:0 auto;
+    display: flex;
+}
+.retry-error{
+    display: flex;
+    align-items: center;
+    background-color: var(--Neutral800);
+    border-radius:10px;
+    height: 35px;
+}
+.retry-img{
+    margin-left: 10px;
+}
+.retry{
+    background-color: transparent;
+    border:none;
+    margin-left: 15px;
+
+}
 .nav{
     display: flex;
     justify-content: space-between;
