@@ -22,3 +22,13 @@ const RenderPage = async() => {
     
 }
 RenderPage()
+/*api para determinar latitud y longit segun texto*/
+const GetLocation = async () =>{
+    const response = await fetch('https://geocoding-api.open-meteo.com/v1/search?name=Argentina');
+    const{status,statusText}=response;
+    const data =await response.json()
+    console.log('respuesta ubicacion',data);
+
+  } 
+
+  GetLocation()
