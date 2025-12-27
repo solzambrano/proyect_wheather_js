@@ -1,4 +1,4 @@
-/**llamado de la api**/
+/**declaración de variables**/
 let information= {};
 let bad_response=false;
 let block_error=document.getElementById('block-error');
@@ -6,6 +6,9 @@ let block_information= document.getElementById("block-information");
 let search_input=document.getElementById("search-input")
 console.log('el serch',search_input);
 
+document.addEventListener('DOMContentLoaded', () => {
+  search_input.value = '';
+});
 
 const callApi =async () => {
   const response=await fetch('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m')  
