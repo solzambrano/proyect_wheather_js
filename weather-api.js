@@ -3,8 +3,8 @@ let information= {};
 let bad_response=false;
 let block_error=document.getElementById('block-error');
 let block_information= document.getElementById("block-information");
-let search_input=document.getElementById("search-input")
-console.log('el serch',search_input);
+let search_input=document.getElementById("search-input");
+let search_button=document.getElementById("search-button")
 
 document.addEventListener('DOMContentLoaded', () => {
   search_input.value = '';
@@ -38,6 +38,6 @@ const GetLocation = async (name) =>{
 } 
 
 GetLocation()
-const GetName= (e) =>{ console.log('aqui esta el input',GetLocation(e.target.value));
+const HandleGetName= () =>{ console.log('aqui esta el input',GetLocation(search_input.value));
 }
-search_input.addEventListener('change',GetName)
+search_button.addEventListener('click',HandleGetName)
