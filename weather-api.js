@@ -3,7 +3,8 @@ let bad_response=false;
 let block_error=document.getElementById('block-error');
 let block_information= document.getElementById("block-information");
 let search_input=document.getElementById("search-input");
-let search_button=document.getElementById("search-button")
+let search_button=document.getElementById("search-button");
+let name_location = document.getElementById("name-location")
 
 document.addEventListener('DOMContentLoaded', () => {
   search_input.value = '';
