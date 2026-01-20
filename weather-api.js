@@ -6,7 +6,7 @@ year:'numeric',
 month:'long',
 day:'numeric'
 })
-
+let location_name='';
 let block_error=document.getElementById('block-error');
 let block_information= document.getElementById("block-information");
 let search_input=document.getElementById("search-input");
@@ -44,6 +44,7 @@ const RenderPage = async() => {
      const {data,status,statusText} =  information
      if(status== 200 && data){
        block_information.style.display='block';
+       name_location.innerText='Argentina'
       SetData(information.data)
       }
       else block_error.style.display="block";
@@ -56,6 +57,7 @@ const RenderPage = async() => {
  
 
 const GetLocation = async (name) =>{
+  location_name=name;
   const response = await fetch(`http://goweather.xyz/weather/${name}`);
   const{status,statusText}=response;
   SetData(await response.json())
@@ -68,7 +70,7 @@ retry.addEventListener('click',callApi)
 
 const SetData = (data) => {
   console.log('respuesta ubicacion',data);
-  name_location.innerText=data.
+  name_location.innerText=location_name ||'Argentina'
   temperature.innerText=data.temperature;
   today.innerText=date_formatted
 
