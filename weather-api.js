@@ -44,6 +44,7 @@ const RenderPage = async() => {
      const {data,status,statusText} =  information
      if(status== 200 && data){
        block_information.style.display='block';
+      SetData(information.data)
       }
       else block_error.style.display="block";
     }
