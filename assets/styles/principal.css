@@ -115,3 +115,11 @@
     justify-content: space-between;
     width: 80%;
 }
+.data-location{
+    margin:0;
+    padding:10px 25px
+}
+.data-location, .name-location{
+    text-align: center;
+
+}
