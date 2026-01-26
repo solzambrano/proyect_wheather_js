@@ -14,19 +14,20 @@ let search_button=document.getElementById("search-button");
 let retry=document.getElementById('retry');
 /**section data weather today */
 let name_location = document.getElementById("name-location");
-let temperature= document.getElementById('today-temp')
-let today= document.getElementById('today')
-let cloudy= ["../images/icon-drizzle.webp"]
-console.log(cloudy);
+let temperature= document.getElementById('today-temp');
+let today= document.getElementById('today');
+let weather_img =document.getElementById('weather-img');
+
+  console.log('clima',weather_img,today);
 
 document.addEventListener('DOMContentLoaded', () => {
   search_input.value = '';
   RenderPage()
 });
-
+/**llamada inicial de la api  */
 const callApi =async () => {
   try{
-    const response=await fetch('http://goweather.xyz/weather/Argentina')   
+    const response=await fetch('https://goweather.xyz/weather/Argentina')   
     if (response){
       const{status,statusText}=response
       const data = await response.json()
@@ -37,7 +38,7 @@ const callApi =async () => {
     console.log(error)
   }
 }
-
+/**render inicial segun api, pantalla de error o principal */
 const RenderPage = async() => {
   try{
    const information = await callApi();  
@@ -58,7 +59,7 @@ const RenderPage = async() => {
 
 const GetLocation = async (name) =>{
   location_name=name;
-  const response = await fetch(`http://goweather.xyz/weather/${name}`);
+  const response = await fetch(`https://goweather.xyz/weather/${name}`);
   const{status,statusText}=response;
   SetData(await response.json())
   
@@ -68,10 +69,18 @@ const HandleGetName= () =>{ console.log('aqui esta el input',GetLocation(search_
 search_button.addEventListener('click',HandleGetName);
 retry.addEventListener('click',callApi)
 
+
+const SetIconWeather = (description) => {
+let cloudy= ["../images/icon-drizzle.webp","../images/icon-fog.webp","../images/icon-overcast.webp","../images/icon-rain.webp","../images/icon-snow.webp","../images/icon-storm.webp","../images/icon-suny.webp"]
+
+}
 const SetData = (data) => {
   console.log('respuesta ubicacion',data);
   name_location.innerText=location_name ||'Argentina'
   temperature.innerText=data.temperature;
-  today.innerText=date_formatted
+  today.innerText=date_formatted;
+  console.log('clima',weather_img);
+  
+  // weather_img = SetIconWeather(data.description)
 
 }
