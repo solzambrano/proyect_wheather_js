@@ -6,6 +6,15 @@ year:'numeric',
 month:'long',
 day:'numeric'
 })
+const ICONS= {
+  drizzle:"./assets/images/icon-drizzle.webp",
+  fog:"./assets/images/icon-fog.webp",
+  overcast:"./assets/images/icon-overcast.webp",
+  rain:"./assets/images/icon-rain.webp",
+  snow:"./assets/images/icon-snow.webp",
+  storm:"./assets/images/icon-storm.webp",
+  cloudy:"./assets/images/icon-partly-cloudy.webp",
+  sunny:"./assets/images/icon-suny.webp"}
 let location_name='';
 let block_error=document.getElementById('block-error');
 let block_information= document.getElementById("block-information");
@@ -71,7 +80,13 @@ retry.addEventListener('click',callApi)
 
 
 const SetIconWeather = (description) => {
-let cloudy= ["../images/icon-drizzle.webp","../images/icon-fog.webp","../images/icon-overcast.webp","../images/icon-rain.webp","../images/icon-snow.webp","../images/icon-storm.webp","../images/icon-suny.webp"]
+
+if(description.includes('thunder'))return ICONS.storm;
+if(description.includes('cloudy'))return ICONS.overcast;
+if(description.includes('light rain'))return ICONS.drizzle;
+if(description.includes('sunny'))return ICONS.sunny;
+if(description.includes('snow'))return ICONS.snow;
+if(description.includes('rain'))return ICONS.rain;
 
 }
 const SetData = (data) => {
@@ -80,7 +95,6 @@ const SetData = (data) => {
   temperature.innerText=data.temperature;
   today.innerText=date_formatted;
   console.log('clima',weather_img);
-  
-  // weather_img = SetIconWeather(data.description)
+  weather_img.src = SetIconWeather(data.description)
 
 }
