@@ -14,7 +14,7 @@ const ICONS= {
   snow:"./assets/images/icon-snow.webp",
   storm:"./assets/images/icon-storm.webp",
   cloudy:"./assets/images/icon-partly-cloudy.webp",
-  sunny:"./assets/images/icon-suny.webp"}
+  sunny:"./assets/images/icon-sunny.webp"}
 let location_name='';
 let block_error=document.getElementById('block-error');
 let block_information= document.getElementById("block-information");
@@ -26,8 +26,6 @@ let name_location = document.getElementById("name-location");
 let temperature= document.getElementById('today-temp');
 let today= document.getElementById('today');
 let weather_img =document.getElementById('weather-img');
-
-  console.log('clima',weather_img,today);
 
 document.addEventListener('DOMContentLoaded', () => {
   search_input.value = '';
@@ -54,7 +52,7 @@ const RenderPage = async() => {
      const {data,status,statusText} =  information
      if(status== 200 && data){
        block_information.style.display='block';
-       name_location.innerText='Argentina'
+       name_location.innerText='Argentina'       
       SetData(information.data)
       }
       else block_error.style.display="block";
@@ -73,28 +71,23 @@ const GetLocation = async (name) =>{
   SetData(await response.json())
   
 } 
-const HandleGetName= () =>{ console.log('aqui esta el input',GetLocation(search_input.value));
-}
+const HandleGetName= () =>{ console.log('aqui esta el input',GetLocation(search_input.value));}
 search_button.addEventListener('click',HandleGetName);
 retry.addEventListener('click',callApi)
 
 
 const SetIconWeather = (description) => {
-
-if(description.includes('thunder'))return ICONS.storm;
-if(description.includes('cloudy'))return ICONS.overcast;
-if(description.includes('light rain'))return ICONS.drizzle;
-if(description.includes('sunny'))return ICONS.sunny;
-if(description.includes('snow'))return ICONS.snow;
-if(description.includes('rain'))return ICONS.rain;
+  if(description.includes('thunder'))return ICONS.storm;
+  if(description.includes('cloudy'))return ICONS.overcast;
+  if(description.includes('light rain'))return ICONS.drizzle;
+  if(description.includes('Sunny'))return ICONS.sunny;
+  if(description.includes('snow'))return ICONS.snow;
+  if(description.includes('rain'))return ICONS.rain;
 
 }
 const SetData = (data) => {
-  console.log('respuesta ubicacion',data);
   name_location.innerText=location_name ||'Argentina'
   temperature.innerText=data.temperature;
   today.innerText=date_formatted;
-  console.log('clima',weather_img);
   weather_img.src = SetIconWeather(data.description)
-
 }
