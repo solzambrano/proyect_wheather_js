@@ -77,12 +77,13 @@ retry.addEventListener('click',callApi)
 
 
 const SetIconWeather = (description) => {
-  if(description.includes('thunder'))return ICONS.storm;
-  if(description.includes('cloudy'))return ICONS.overcast;
-  if(description.includes('light rain'))return ICONS.drizzle;
-  if(description.includes('Sunny'))return ICONS.sunny;
-  if(description.includes('snow'))return ICONS.snow;
-  if(description.includes('rain'))return ICONS.rain;
+  console.log(description); 
+  if(description.toLowerCase().includes('thunder'))return ICONS.storm;
+  if(description.toLowerCase().includes('cloudy'))return ICONS.overcast;
+  if(description.toLowerCase().includes('light rain'))return ICONS.drizzle;
+  if(description.toLowerCase().includes('sunny'))return ICONS.sunny;
+  if(description.toLowerCase().includes('snow'))return ICONS.snow;
+  if(description.toLowerCase().includes('rain'))return ICONS.rain;
 
 }
 const SetData = (data) => {
