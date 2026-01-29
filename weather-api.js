@@ -14,7 +14,10 @@ const ICONS= {
   snow:"./assets/images/icon-snow.webp",
   storm:"./assets/images/icon-storm.webp",
   cloudy:"./assets/images/icon-partly-cloudy.webp",
-  sunny:"./assets/images/icon-sunny.webp"}
+  sunny:"./assets/images/icon-sunny.webp",
+  clear:"./assets/images/icon-clear.svg"
+}
+
 let location_name='';
 let block_error=document.getElementById('block-error');
 let block_information= document.getElementById("block-information");
@@ -23,10 +26,10 @@ let search_button=document.getElementById("search-button");
 let retry=document.getElementById('retry');
 /**section data weather today */
 let name_location = document.getElementById("name-location");
-let temperature= document.getElementById('today-temp');
-let today= document.getElementById('today');
-let weather_img =document.getElementById('weather-img');
-
+let temperature = document.getElementById('today-temp');
+let today = document.getElementById('today');
+let weather_img = document.getElementById('weather-img');
+let wind_number = document.getElementById('wind-number');
 document.addEventListener('DOMContentLoaded', () => {
   search_input.value = '';
   RenderPage()
@@ -77,18 +80,21 @@ retry.addEventListener('click',callApi)
 
 
 const SetIconWeather = (description) => {
-  console.log(description); 
   if(description.toLowerCase().includes('thunder'))return ICONS.storm;
   if(description.toLowerCase().includes('cloudy'))return ICONS.overcast;
   if(description.toLowerCase().includes('light rain'))return ICONS.drizzle;
   if(description.toLowerCase().includes('sunny'))return ICONS.sunny;
   if(description.toLowerCase().includes('snow'))return ICONS.snow;
   if(description.toLowerCase().includes('rain'))return ICONS.rain;
+  if(description.toLowerCase().includes('clear'))return ICONS.clear;
+
 
 }
 const SetData = (data) => {
+    console.log(data); 
   name_location.innerText=location_name ||'Argentina'
   temperature.innerText=data.temperature;
   today.innerText=date_formatted;
   weather_img.src = SetIconWeather(data.description)
+  wind_number.innerText=data.wind
 }
