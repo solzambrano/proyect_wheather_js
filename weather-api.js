@@ -35,9 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
   RenderPage()
 });
 /**llamada inicial de la api  */
-const callApi =async () => {
+const callApi =async (name) => {
   try{
-    const response=await fetch('https://goweather.xyz/weather/Argentina')   
+
+    const response=await fetch(`https://goweather.xyz/weather/${name}`)   
     if (response){
       const data = await response.json();
       return {
@@ -52,9 +53,10 @@ const callApi =async () => {
   }
 }
 /**render inicial segun api, pantalla de error o principal */
-const RenderPage = async() => {
+const RenderPage = async(name) => {
   try{
-    const { data, status } = await callApi();
+    location_name= name ||'Argentina'
+    const { data, status } = await callApi(location_name);
 console.log(data,'dat');
       if(status == 200 && data){
         block_information.style.display='block';
@@ -69,14 +71,7 @@ console.log(data,'dat');
 }
  
 
-const GetLocation = async (name) =>{
-  location_name=name;
-  const response = await fetch(`https://goweather.xyz/weather/${name}`);
-  const{status,statusText}=response;
-  SetData(await response.json())
-  
-} 
-const HandleGetName= () =>{ console.log('aqui esta el input',GetLocation(search_input.value));}
+const HandleGetName= () =>{ RenderPage(search_input.value);}
 search_button.addEventListener('click',HandleGetName);
 retry.addEventListener('click',RenderPage)
 
@@ -94,7 +89,7 @@ const SetIconWeather = (description) => {
 }
 const SetData = (data) => {
     console.log(data); 
-  name_location.innerText=location_name ||'Argentina'
+  name_location.innerText=location_name
   temperature.innerText=data.temperature;
   today.innerText=date_formatted;
   weather_img.src = SetIconWeather(data.description)
