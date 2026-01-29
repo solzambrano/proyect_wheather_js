@@ -1,6 +1,7 @@
 .body-page{
     background-color:rgb(3, 3, 92) ;
     width: 310px;
+    height: auto;
     margin:0 auto;
 }
 *{color:white;
@@ -103,7 +104,7 @@
 }
 .today{
     background-image: url(../images/bg-today-small.svg);
-    height: 350px;
+    height: 255px;
     width: 90%;
     margin:0 auto;
     background-repeat: no-repeat;
@@ -121,11 +122,13 @@
     padding:10px 25px
 }
 .today-location{
-    font-size: 25px;
     margin:0;
     padding-top: 10px;
 }
-.data-location{
+.today-location, .text-weather{
+    font-size: 25px;
+}
+.data-location, .description-weather{
     font-size: 14px;
 }
 .today-temp{
@@ -137,4 +140,18 @@
 }
 .today-image{
     width: 70px;
+}
+/** aditional information*/
+.aditional-information{
+    height: 225px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 50fr);
+    margin:0px 10px;
+}
+.weather-aditional{
+    border:1px solid white;
+    width: 100%;
+    text-align: center;
+
 }
