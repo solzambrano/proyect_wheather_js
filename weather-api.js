@@ -39,9 +39,12 @@ const callApi =async () => {
   try{
     const response=await fetch('https://goweather.xyz/weather/Argentina')   
     if (response){
-      const{status,statusText}=response
-      const data = await response.json()
-      return {data,status,statusText}
+      const data = await response.json();
+      return {
+        data,
+        status:response.status,
+        statusText:response.statusText
+      }
     }
   }
   catch(error){
@@ -51,19 +54,18 @@ const callApi =async () => {
 /**render inicial segun api, pantalla de error o principal */
 const RenderPage = async() => {
   try{
-   const information = await callApi();  
-     const {data,status,statusText} =  information
-     if(status== 200 && data){
-       block_information.style.display='block';
-       name_location.innerText='Argentina'       
-      SetData(information.data)
-      }
-      else block_error.style.display="block";
+    const { data, status } = await callApi();
+console.log(data,'dat');
+      if(status == 200 && data){
+        block_information.style.display='block';
+        name_location.innerText='Argentina'       
+       SetData(data)
+       }
+       else block_error.style.display="block";
     }
    catch(error){
     console.log(error)
-  }
-  
+  } 
 }
  
 
@@ -76,7 +78,7 @@ const GetLocation = async (name) =>{
 } 
 const HandleGetName= () =>{ console.log('aqui esta el input',GetLocation(search_input.value));}
 search_button.addEventListener('click',HandleGetName);
-retry.addEventListener('click',callApi)
+retry.addEventListener('click',RenderPage)
 
 
 const SetIconWeather = (description) => {
