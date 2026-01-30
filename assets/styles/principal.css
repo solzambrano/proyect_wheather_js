@@ -138,7 +138,7 @@
 .data-location, .today-location{
     text-align: center;
 }
-.today-image{
+.today-image, .icon-forecast{
     width: 70px;
 }
 /** aditional information*/
@@ -150,8 +150,15 @@
     margin:0px 10px;
 }
 .weather-aditional{
-    border:1px solid white;
+    background-color: var(--Neutral600);
     width: 100%;
     text-align: center;
-
+    border-radius:10px
+}
+.daily-forecast{
+    display: grid;
+    grid-template-columns: repeat(3, 50fr);
+}
+.forecast-card{
+    border:1px solid white
 }
