@@ -66,10 +66,14 @@ const RenderPage = async(name) => {
     const { data, status } = await callApi(location_name);
       if(status == 200 && data){
         block_information.style.display='block';
+        block_error.style.display="none"
         name_location.innerText='Argentina'       
        SetData(data)
        }
-       else block_error.style.display="block";
+       else {
+        block_error.style.display="block";
+        block_information.style.display='none'
+       }
     }
    catch(error){
     console.log(error)
@@ -93,16 +97,14 @@ const SetIconWeather = (description) => {
   if(description.toLowerCase().includes('clear'))return ICONS.clear;
 }
 
-const setForecast = (forecast,data_weather,offset) => {
+const setForecast = (card,data_weather,offset) => {
   date.setDate(date.getDate()+offset+1)
     const weekday = date.toLocaleDateString('en', {
     weekday: 'short'
   });
-  forecast.innerText=weekday;
-  forecast.src=SetIconWeather('sunny');
-  forecast.innerText=data_weather.temperature
-
-  console.log(forecast,data_weather,weekday);
+  card.children[0].innerText=weekday;
+  card.children[1].src=SetIconWeather('cloudy');
+  card.children[2].innerText=data_weather.temperature
 
 }
 const SetData = (data) => {
@@ -113,8 +115,8 @@ const SetData = (data) => {
     today.innerText=date_formatted;
     weather_img.src = SetIconWeather(data.description)
     wind_number.innerText=data.wind
-    for(forecast of forecast_card){
-      setForecast(forecast.children[day],data.forecast[day],day)
+    for(card of forecast_card){
+      setForecast(card,data.forecast[day],day)
       day++
 
     }
