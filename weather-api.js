@@ -63,6 +63,8 @@ const callApi =async (name) => {
 const RenderPage = async(name) => {
   try{
     location_name= name ||'Argentina'
+    console.log(location_name);
+    
     const { data, status } = await callApi(location_name);
       if(status == 200 && data){
         block_information.style.display='block';

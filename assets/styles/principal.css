@@ -44,6 +44,7 @@
 .retry{
     background-color: transparent;
     border:none;
+    cursor: pointer;
     margin-left: 15px;
 
 }
@@ -112,7 +113,8 @@
 }
 /**section today*/
 .daily-text{
-margin:10px 0px
+margin:10px 0px;
+padding-left: 10px;
 }
 .today-temperature{
     display: flex;
@@ -161,11 +163,19 @@ margin:10px 0px
 .daily-forecast{
     display: grid;
     grid-template-columns: repeat(3, 50fr);
-    gap:8px
+    gap:8px;
+    padding: 0px 10px;
 }
 .forecast-card{
-    border:1px solid white
+    border-radius: 10px;
+     background-color: var(--Neutral600)
+
 }
 .day-forecast , .temperature-forecast{
     text-align: center;
+}
+.hourly-forecast{
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 25px;
 }
