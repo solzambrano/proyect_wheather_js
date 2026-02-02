@@ -32,10 +32,7 @@ let temperature = document.getElementById('today-temp');
 let today = document.getElementById('today');
 let weather_img = document.getElementById('weather-img');
 let wind_number = document.getElementById('wind-number');
-// let day_forecast = document.getElementsByClassName('forecast-card');
 let forecast_card = document.getElementsByClassName('forecast-card');
-// let forecast_card = document.getElementsByClassName('forecast-card');
-
 
 document.addEventListener('DOMContentLoaded', () => {
   search_input.value = '';
@@ -44,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
 /**llamada inicial de la api  */
 const callApi =async (name) => {
   try{
-
     const response=await fetch(`https://goweather.xyz/weather/${name}`)   
     if (response){
       const data = await response.json();
@@ -63,8 +59,7 @@ const callApi =async (name) => {
 const RenderPage = async(name) => {
   try{
     location_name= name ||'Argentina'
-    console.log(location_name);
-    
+    console.log(location_name);    
     const { data, status } = await callApi(location_name);
       if(status == 200 && data){
         block_information.style.display='block';
@@ -100,17 +95,17 @@ const SetIconWeather = (description) => {
 }
 
 const setForecast = (card,data_weather,offset) => {
-  date.setDate(date.getDate()+offset+1)
-    const weekday = date.toLocaleDateString('en', {
+  const date= new Date();
+  date.setDate(date.getDate()+(offset+1))
+  const weekday = date.toLocaleDateString('en', {
     weekday: 'short'
   });
   card.children[0].innerText=weekday;
   card.children[1].src=SetIconWeather('cloudy');
   card.children[2].innerText=data_weather.temperature
-
 }
+
 const SetData = (data) => {
-    console.log(data); 
     let day=0;
     name_location.innerText=location_name
     temperature.innerText=data.temperature;
