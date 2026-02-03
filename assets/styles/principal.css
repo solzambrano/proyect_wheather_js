@@ -182,3 +182,20 @@ padding-left: 10px;
     margin: 0 auto;
     padding-top: 25px;
 }
+
+/*Desktop part*/
+@media (min-width: 1024px) {
+  /* estilos desktop */
+  .body-page{
+  width: 1024px;
+}
+.nav{
+    padding: 25px 50px
+}
+.weather-logo{
+    width: 135px;
+}
+.units{
+    height: 30px;
+}
+}
